@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)output\bin</OutDir>
-    <IntDir>$(SolutionDir)output\obj</IntDir>
+    <OutDir>$(SolutionDir)output\bin\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(CPP_LIBS)\SFML2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CPP_LIBS)\SFML2\include;$(ProjectDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,9 +117,9 @@
       <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(CPP_LIBS)\SFML2\bin\sfml-window-d-2.dll" "$(SolutionDir)output\bin" /D /Y
-xcopy "$(CPP_LIBS)\SFML2\bin\sfml-system-d-2.dll" "$(SolutionDir)output\bin" /D /Y
-xcopy "$(CPP_LIBS)\SFML2\bin\sfml-graphics-d-2.dll" "$(SolutionDir)output\bin" /D /Y</Command>
+      <Command>xcopy "$(CPP_LIBS)\SFML2\bin\sfml-window-d-2.dll" "$(SolutionDir)output\bin\" /D /Y
+xcopy "$(CPP_LIBS)\SFML2\bin\sfml-system-d-2.dll" "$(SolutionDir)output\bin\" /D /Y
+xcopy "$(CPP_LIBS)\SFML2\bin\sfml-graphics-d-2.dll" "$(SolutionDir)output\bin\" /D /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,6 +140,10 @@ xcopy "$(CPP_LIBS)\SFML2\bin\sfml-graphics-d-2.dll" "$(SolutionDir)output\bin" /
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\lsGame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\lsGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
