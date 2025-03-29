@@ -140,10 +140,14 @@ xcopy "$(CPP_LIBS)\SFML2\bin\sfml-graphics-d-2.dll" "$(SolutionDir)output\bin\" 
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\lsAction.cpp" />
+    <ClCompile Include="src\lsActionTarget.cpp" />
     <ClCompile Include="src\lsGame.cpp" />
     <ClCompile Include="src\lsPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\lsAction.h" />
+    <ClInclude Include="src\lsActionTarget.h" />
     <ClInclude Include="src\lsGame.h" />
     <ClInclude Include="src\lsPlayer.h" />
   </ItemGroup>

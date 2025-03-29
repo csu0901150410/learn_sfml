@@ -27,12 +27,24 @@
     <ClCompile Include="src\lsPlayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\lsAction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lsActionTarget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lsGame.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\lsPlayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lsAction.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lsActionTarget.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

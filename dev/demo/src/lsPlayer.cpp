@@ -1,5 +1,7 @@
 ﻿#include "lsPlayer.h"
 
+#include "lsAction.h"
+
 #define M_PI 3.1415926535897932384626433832795f
 
 lsPlayer::lsPlayer()
@@ -9,14 +11,31 @@ lsPlayer::lsPlayer()
 {
 	m_shape.setFillColor(sf::Color::Red);
 	m_shape.setOrigin(sf::Vector2f(16, 16));
+
+	// 绑定动作，原本是左键-->旋转，现在是左键-->事件动作-->旋转
+	// 这样控制事件动作的挂载/卸载，就能控制是否响应按键了
+	bind(lsAction(sf::Keyboard::Up), [this](const sf::Event&)
+		{
+			m_isMoving = true;
+		});
+
+	bind(lsAction(sf::Keyboard::Left), [this](const sf::Event&)
+		{
+			m_rotation -= 1;
+		});
+
+	bind(lsAction(sf::Keyboard::Right), [this](const sf::Event&)
+		{
+			m_rotation += 1;
+		});
 }
 
 void lsPlayer::process_events()
 {
-	m_isMoving = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
+	m_isMoving = false;
 	m_rotation = 0;
-	m_rotation -= sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ? 1 : 0;
-    m_rotation += sf::Keyboard::isKeyPressed(sf::Keyboard::Right) ? 1 : 0;
+	// 调用父类的方法
+	lsActionTarget::process_events();
 }
 
 void lsPlayer::update(sf::Time deltaTime)

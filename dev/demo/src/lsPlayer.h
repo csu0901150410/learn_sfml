@@ -4,7 +4,9 @@
 
 #include <utility>
 
-class lsPlayer : public sf::Drawable
+#include "lsActionTarget.h"
+
+class lsPlayer : public sf::Drawable, public lsActionTarget
 {
 public:
 	lsPlayer(const lsPlayer&) = delete;
