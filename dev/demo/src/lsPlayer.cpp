@@ -11,6 +11,14 @@ lsPlayer::lsPlayer()
 	m_shape.setOrigin(sf::Vector2f(16, 16));
 }
 
+void lsPlayer::process_events()
+{
+	m_isMoving = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
+	m_rotation = 0;
+	m_rotation -= sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ? 1 : 0;
+    m_rotation += sf::Keyboard::isKeyPressed(sf::Keyboard::Right) ? 1 : 0;
+}
+
 void lsPlayer::update(sf::Time deltaTime)
 {
 	float seconds = deltaTime.asSeconds();

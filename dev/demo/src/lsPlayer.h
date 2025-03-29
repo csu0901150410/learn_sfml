@@ -19,17 +19,17 @@ public:
 		m_shape.setPosition(std::forward<Args>(args)...);
 	}
 
+	void process_events();
 	void update(sf::Time deltaTime);
 
 private:
 	virtual void draw(sf::RenderTarget& target, 
 		sf::RenderStates states) const override;
 
-public:
+private:
 	bool m_isMoving;
 	int m_rotation;
 
-private:
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_velocity;
 };

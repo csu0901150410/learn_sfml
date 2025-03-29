@@ -85,47 +85,10 @@ void lsGame::process_events()
             m_window.close();
 		}
 		break;
-
-        // 左右键旋转，上键移动
-		case sf::Event::KeyPressed:
-		{
-			if (sf::Keyboard::Escape == event.key.code)
-			{
-				m_window.close();
-			}
-			else if (sf::Keyboard::Up == event.key.code)
-			{
-				m_player.m_isMoving = true;
-			}
-			else if (sf::Keyboard::Left == event.key.code)
-			{
-				m_player.m_rotation = -1;
-			}
-            else if (sf::Keyboard::Right == event.key.code)
-			{
-				m_player.m_rotation = 1;
-			}
-		}
-		break;
-
-		case sf::Event::KeyReleased:
-		{
-			if (sf::Keyboard::Up == event.key.code)
-			{
-				m_player.m_isMoving = false;
-			}
-			else if (sf::Keyboard::Left == event.key.code)
-			{
-				m_player.m_rotation = 0;
-			}
-			else if (sf::Keyboard::Right == event.key.code)
-			{
-				m_player.m_rotation = 0;
-			}
-		}
-		break;
 		}
     }
+
+	m_player.process_events();
 }
 
 void lsGame::update(sf::Time deltaTime)
