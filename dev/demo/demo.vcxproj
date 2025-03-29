@@ -141,9 +141,11 @@ xcopy "$(CPP_LIBS)\SFML2\bin\sfml-graphics-d-2.dll" "$(SolutionDir)output\bin\" 
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\lsGame.cpp" />
+    <ClCompile Include="src\lsPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lsGame.h" />
+    <ClInclude Include="src\lsPlayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

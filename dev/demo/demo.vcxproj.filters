@@ -24,9 +24,15 @@
     <ClCompile Include="src\lsGame.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\lsPlayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lsGame.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lsPlayer.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

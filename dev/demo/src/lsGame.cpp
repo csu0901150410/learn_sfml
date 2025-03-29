@@ -1,16 +1,15 @@
-#include "lsGame.h"
+ï»¿#include "lsGame.h"
 
 #include <iostream>
 
 lsGame::lsGame()
 	: m_window(sf::VideoMode(800, 600), "sfml demo")
-	, m_player(150)
+	, m_player()
 	, m_font()
 	, m_text()
 	, m_fps(0)
 {
-	m_player.setFillColor(sf::Color::Red);
-	m_player.setPosition(10, 20);
+	m_player.set_position(400.f, 300.f);
 
 	if (!m_font.loadFromFile(get_resources_path() + "font/FiraCode-Regular.ttf"))
 	{
@@ -22,20 +21,20 @@ lsGame::lsGame()
 	m_text.setPosition(10, 10);
 }
 
-// ¿ÉÒÔÔÚÏîÄ¿ÊôĞÔ/µ÷ÊÔ/¹¤×÷Ä¿Â¼ÖĞÉèÖÃ¸ùÄ¿Â¼
+// å¯ä»¥åœ¨é¡¹ç›®å±æ€§/è°ƒè¯•/å·¥ä½œç›®å½•ä¸­è®¾ç½®æ ¹ç›®å½•
 std::string lsGame::get_resources_path()
 {
 	std::string path = "resources/";
 	return path;
 }
 
-// ¹Ì¶¨Ê±¼ä²½³¤
+// å›ºå®šæ—¶é—´æ­¥é•¿
 void lsGame::run(int frame_per_seconds)
 {
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
-	// Ã¿Ö¡µÄÊ±¼ä¼ä¸ô£¬¼ÙÉè60Ö¡/Ãë£¬Ã¿Ö¡µÄÊ±¼ä¼ä¸ô = 1/60s
+	// æ¯å¸§çš„æ—¶é—´é—´éš”ï¼Œå‡è®¾60å¸§/ç§’ï¼Œæ¯å¸§çš„æ—¶é—´é—´éš” = 1/60s
     sf::Time timePerFrame = sf::seconds(1.f / frame_per_seconds);
 
 	int frameCount = 0;
@@ -46,7 +45,7 @@ void lsGame::run(int frame_per_seconds)
 		process_events();
 		bool repaint = false;
 
-		// µş¼ÓÉÏÒ»´ÎÑ­»·µÄºÄÊ±£¬¿´¿´ÔÚ´Ë¼ä¸ôÄÚĞèÒª¸üĞÂ¶àÉÙÖ¡
+		// å åŠ ä¸Šä¸€æ¬¡å¾ªç¯çš„è€—æ—¶ï¼Œçœ‹çœ‹åœ¨æ­¤é—´éš”å†…éœ€è¦æ›´æ–°å¤šå°‘å¸§
 		sf::Time deltaTime = clock.restart();
 		timeSinceLastUpdate += deltaTime;
 		fpsTimeout += deltaTime;
@@ -56,19 +55,19 @@ void lsGame::run(int frame_per_seconds)
 			repaint = true;
 			update(timePerFrame);
 
-			// ¼ÆËãfps
+			// è®¡ç®—fps
 			frameCount++;
 			m_fps = frameCount / fpsTimeout.asSeconds();
 		}
 		
-		// ÇåÒ»ÏÂ£¬²»È»Òç³öÁË
+		// æ¸…ä¸€ä¸‹ï¼Œä¸ç„¶æº¢å‡ºäº†
 		if (fpsTimeout > sf::seconds(1))
         {
 			fpsTimeout -= sf::seconds(1);
             frameCount = 0;
         }
 
-		// ¸üĞÂÁË²ÅĞèÒªÖØ»æ£¬ÏŞÖÆÖØ»æµÄÆµÂÊ
+		// æ›´æ–°äº†æ‰éœ€è¦é‡ç»˜ï¼Œé™åˆ¶é‡ç»˜çš„é¢‘ç‡
 		if (repaint)
 			render();
 	}
@@ -86,13 +85,52 @@ void lsGame::process_events()
             m_window.close();
 		}
 		break;
+
+        // å·¦å³é”®æ—‹è½¬ï¼Œä¸Šé”®ç§»åŠ¨
+		case sf::Event::KeyPressed:
+		{
+			if (sf::Keyboard::Escape == event.key.code)
+			{
+				m_window.close();
+			}
+			else if (sf::Keyboard::Up == event.key.code)
+			{
+				m_player.m_isMoving = true;
+			}
+			else if (sf::Keyboard::Left == event.key.code)
+			{
+				m_player.m_rotation = -1;
+			}
+            else if (sf::Keyboard::Right == event.key.code)
+			{
+				m_player.m_rotation = 1;
+			}
+		}
+		break;
+
+		case sf::Event::KeyReleased:
+		{
+			if (sf::Keyboard::Up == event.key.code)
+			{
+				m_player.m_isMoving = false;
+			}
+			else if (sf::Keyboard::Left == event.key.code)
+			{
+				m_player.m_rotation = 0;
+			}
+			else if (sf::Keyboard::Right == event.key.code)
+			{
+				m_player.m_rotation = 0;
+			}
+		}
+		break;
 		}
     }
 }
 
 void lsGame::update(sf::Time deltaTime)
 {
-
+	m_player.update(deltaTime);
 }
 
 void lsGame::render()

@@ -1,13 +1,15 @@
-#pragma once
+ï»¿#pragma once
 
 #include <SFML//Graphics.hpp>
+
+#include "lsPlayer.h"
 
 class lsGame
 {
 public:
-	// ½ûÖ¹¿½±´¹¹Ôì
+	// ç¦æ­¢æ‹·è´æ„é€ 
 	lsGame(const lsGame&) = delete;
-	// ½ûÖ¹¸³ÖµÔËËã·û
+	// ç¦æ­¢èµ‹å€¼è¿ç®—ç¬¦
 	lsGame& operator=(const lsGame&) = delete;
 	lsGame();
 
@@ -24,7 +26,8 @@ private:
 
 private:
 	sf::RenderWindow m_window;
-	sf::CircleShape m_player;
+	//sf::CircleShape m_player;
+	lsPlayer m_player;
 
 	sf::Font m_font;
 	sf::Text m_text;
