@@ -28,7 +28,9 @@ public:
 
 private:
 	// 声明友元，以便友元可访问私有成员
+	template <typename>
 	friend class lsActionTarget;
+
 	sf::Event m_event;
 	int m_type;
 };

@@ -24,13 +24,10 @@
     <ClCompile Include="src\lsGame.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\lsPlayer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\lsAction.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\lsActionTarget.cpp">
+    <ClCompile Include="src\lsPlayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,8 +41,19 @@
     <ClInclude Include="src\lsAction.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\lsActionTarget.h">
+    <ClInclude Include="src\lsActionTarget.hpp">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\lsActionMap.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\lsActionMap.inl">
+      <Filter>src</Filter>
+    </None>
+    <None Include="src\lsActionTarget.inl">
+      <Filter>src</Filter>
+    </None>
   </ItemGroup>
 </Project>

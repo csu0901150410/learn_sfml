@@ -4,9 +4,9 @@
 
 #include <utility>
 
-#include "lsActionTarget.h"
+#include "lsActionTarget.hpp"
 
-class lsPlayer : public sf::Drawable, public lsActionTarget
+class lsPlayer : public sf::Drawable, public lsActionTarget<int>
 {
 public:
 	lsPlayer(const lsPlayer&) = delete;
@@ -24,6 +24,14 @@ public:
 	void process_events();
 	void update(sf::Time deltaTime);
 
+	enum PlayerInputs
+	{
+		kUp,
+		kLeft,
+		kRight,
+	};
+	static void set_default_inputs();
+
 private:
 	virtual void draw(sf::RenderTarget& target, 
 		sf::RenderStates states) const override;
@@ -34,4 +42,8 @@ private:
 
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_velocity;
+
+	// 当前lsPlayer类应用的一套事件-动作映射，可以换成另一套，即另一个lsActionMap对象
+	static lsActionMap<int> m_playerInputs;
 };
+
