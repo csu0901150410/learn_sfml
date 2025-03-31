@@ -1,8 +1,11 @@
 #include "lsGame.h"
 
+#include "lsConfiguration.h"
+
 int main()
 {
-    lsPlayer::set_default_inputs();
+    // 初始化加载资源
+    lsConfiguration::initialize();
 
 	lsGame game;
     game.run(60);
