@@ -16,6 +16,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{502a1fea-13e6-4a0f-805e-3149b7cd5f33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{0a278599-fe26-4603-abd6-2dacdcb66f6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +30,9 @@
     <ClCompile Include="src\lsConfiguration.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="core\lsGeometry.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lsGame.h">
@@ -37,6 +43,18 @@
     </ClInclude>
     <ClInclude Include="src\lsResourceManager.hpp">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="core\lsGeometry.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\lsRenderer.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\lsSFMLRenderer.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\lsDocument.h">
+      <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

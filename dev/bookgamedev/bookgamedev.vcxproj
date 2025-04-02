@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(CPP_LIBS)\SFML2\include;$(ProjectDir)src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CPP_LIBS)\SFML2\include;$(ProjectDir)src;$(ProjectDir)core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,11 +139,16 @@ xcopy "$(CPP_LIBS)\SFML2\bin\sfml-graphics-d-2.dll" "$(SolutionDir)output\bin\" 
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="core\lsGeometry.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\lsConfiguration.cpp" />
     <ClCompile Include="src\lsGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="core\lsDocument.h" />
+    <ClInclude Include="core\lsGeometry.h" />
+    <ClInclude Include="core\lsRenderer.h" />
+    <ClInclude Include="core\lsSFMLRenderer.h" />
     <ClInclude Include="src\lsConfiguration.h" />
     <ClInclude Include="src\lsGame.h" />
     <ClInclude Include="src\lsResourceManager.hpp" />
